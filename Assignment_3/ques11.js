@@ -1,4 +1,28 @@
-const students = {
+function calculateAverages(students1) {
+    // Create an object to hold the averages for each student
+    let averages = {};
+
+    // Loop through each student key
+    for (let student in students) {
+        // Extract the scores for the current student
+        let scores = Object.values(students[student]);
+
+        // Calculate the sum of the scores
+        let sum = scores.reduce((acc, score) => acc + score, 0);
+
+        // Calculate the average
+        let average = sum / scores.length;
+
+        // Store the average in the new structure
+        averages[student] = { average: Math.floor(average) }; //Math.floor is used to round down 64.2 to 64.
+    }
+
+    // Return the averages object
+    return averages;
+}
+
+// Input data
+const students1 = {
     student1: {
         subject1: 44,
         subject2: 56,
@@ -22,11 +46,8 @@ const students = {
     }
 };
 
-const studentsWithAverages = Object.keys(students).map(student => {
-    const subjects = students[student];
-    const totalScore = Object.values(subjects).reduce((acc, score) => acc + score, 0);
-    const averageScore = totalScore / Object.values(subjects).length;
-    return { [student]: { average: averageScore } };
-});
+// Calculate averages
+const averages = calculateAverages(students1);
 
-console.log(studentsWithAverages);
+// Output result
+console.log(averages);
