@@ -3,9 +3,9 @@ function calculateAverages(students1) {
     let averages = {};
 
     // Loop through each student key
-    for (let student in students) {
+    for (let student in students1) {
         // Extract the scores for the current student
-        let scores = Object.values(students[student]);
+        let scores = Object.values(students1[student]);
 
         // Calculate the sum of the scores
         let sum = scores.reduce((acc, score) => acc + score, 0);
